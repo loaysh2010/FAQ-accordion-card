@@ -1,0 +1,155 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  height: 100vh;
+  /* display: grid;
+    place-content:center; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    180deg,
+    rgba(175, 103, 233, 1) 0%,
+    rgba(101, 101, 231, 1) 100%
+  );
+}
+.container {
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-radius: 20px;
+  font-family: "Kumbh Sans", sans-serif;
+  width: 50%;
+  min-height: 500px;
+  padding: 30px 50px 30px 0;
+}
+
+/* ############################################*/
+.container .faq {
+  margin-left: 30px;
+}
+.container .faq > h1 {
+  margin-top: 70px;
+}
+
+.container .faq .line {
+  position: relative;
+  border-bottom: 1px solid hsl(240, 5%, 91%);
+  padding: 20px 0;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.container .faq .line .qest {
+    font-weight: normal;
+    height: 30px;
+    color: hsl(238, 29%, 16%);
+    position: relative;
+  }
+
+  .container .faq .line.active .qest {
+    font-weight: bold;
+    height: 30px;
+    /* color: hsl(14, 88%, 65%); */
+    position: relative;
+  }
+  .container .faq .line .qest::after{
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f078";
+    position: absolute;
+    color: hsl(14, 88%, 65%);
+    right: 20px;
+    font-size: 12px;
+  }
+  .container .faq .line.active .qest::after{
+    content: "\f077";
+  }
+
+.container .faq .line .qest:hover {
+  color: hsl(14, 88%, 65%);
+}
+
+.container .faq .line .answer {
+    width: 90%;
+    height: 0;
+    overflow: hidden;
+    transition: 0.3s;
+}
+.container .faq .line.active .answer {
+    height: fit-content;
+}
+/* ############################################*/
+.container .image {
+  position: relative;
+  background-image: url(../imgs/bg-pattern-desktop.svg);
+  background-repeat: no-repeat;
+  background-size: 170%;
+  background-position: top -250px left -500px;
+}
+
+img {
+  overflow-clip-margin: content-box;
+  overflow: clip;
+}
+.container .image > img {
+  display: block;
+  margin-left: -20%;
+  margin-top: -45%;
+}
+.container .image .image-crop {
+  overflow-x: hidden;
+}
+.container .image .image-crop img {
+  display: block;
+  margin-top: 10%;
+  margin-left: -20%;
+}
+
+@media (max-width: 767px) {
+  body {
+    display: block;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 150px auto;
+    position: relative;
+    
+  }
+  .container .image {
+    background-image: url(../imgs/bg-pattern-mobile.svg);
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: top 0px left 50%;
+    /* flex: 1;
+    max-width: 100%; */
+  }
+
+  .container .image .image-crop {
+    overflow-x: initial;
+    z-index: 0;
+  }
+  .container .image .image-crop img {
+    /* margin-top: -50%;
+    margin-left: -20%;
+    max-width: 100%; */
+    position: absolute;
+    top:-80%;
+    left:40%;
+    /* transform: translateY(-50%); */
+    width: 60%;
+    z-index: 0;
+
+}
+  .container .image> img:last-child {
+    position: absolute;
+  }
+  .container .faq {
+    flex:2;
+}
+}
